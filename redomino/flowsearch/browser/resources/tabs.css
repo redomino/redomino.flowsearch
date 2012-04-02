@@ -1,0 +1,74 @@
+.flowsearchtabs {
+    height: 20px;
+    margin: 0 !important;
+    padding: 0;
+}
+
+.flowsearchtabs li {
+    list-style-type: none;
+    margin: 0 !important;
+    padding: 0;
+}
+
+.flowsearchtabs .current a{
+    background-color: #DDDDDD;
+    border-bottom: 1px solid #DDDDDD !important;
+    color: #000000;
+    cursor: default;
+}
+
+.flowsearchtabs a {
+    box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: #EFEFEF;
+    border-bottom: 0 none !important;
+    color: #777777;
+    display: block;
+    float: left;
+    font-size: 12px;
+    height: 22px;
+    margin-right: 2px;
+    margin-top: 3px;
+    outline: 0 none;
+    padding: 2px 5px;
+    position: relative;
+    text-decoration: none;
+    top: 1px;
+}
+
+.flowsearchpanes {
+    clear: both;
+}
+
+.flowsearchpanes > div {
+    background-color: #DDDDDD;
+    display: none;
+   /* min-height: 200px;*/
+    padding: 10px 10px;
+}
+
+.flowsearchpanes .field{
+    margin-bottom:0;
+}
+#overview{
+    background-color:#EEEEEE;
+    padding:10px;
+    border: 2px solid #DDDDDD;
+/*    margin-top:1em;*/
+}
+#overview dl{
+    margin-bottom:4px;
+}
+#overview dt,#overview dd {
+    display:inline;
+    margin:0;
+}
+
+#results {
+    border-top: 2px solid #DDDDDD;
+
+/*    margin-top:1em;*/
+}
+
