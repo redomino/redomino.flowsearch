@@ -23,6 +23,46 @@ jQuery.fn.searchtabs = function ($panes){
 
     $("#filterpanel_filters li").searchtabs($("div.flowsearchpanes > div"));
 
+    var equalHeight = function (group) {
+        var tallest = 0;
+        group.each(function() {
+            var thisHeight = $(this).height();
+            if(thisHeight > tallest) {
+                tallest = thisHeight;
+            }
+        });
+        group.height(tallest);
+    };
+
+    var setup_search = function (){
+        var tabs = $('div.field');
+        equalHeight(tabs);
+        $('a#divlegend-textpanel').click();
+        $('.flowsearchpanels SearchableText').focus();
+    };
+
+    setup_search();
+
+    var reset_search = function (){
+        $('select#created').val('1970/02/01');
+
+        $('input[name=review_state:list]').removeAttr('checked');
+        $('input#published').removeAttr('checked');
+    
+        $('select#Creator').val("");
+        $('select#sort_on').val("");
+
+        $('input[name=portal_type:list]').removeAttr('checked');
+        $('input#SearchableText').val('');
+
+        $('input#SearchableText').change();
+    };
+    $('#reset-search').click(function(event){
+        event.preventDefault();
+        reset_search();
+        setup_search();
+    });
+
     //depth
     var path_all_site = function (){
         if ($('#path_query input.all_site').is(':checked')){
@@ -180,7 +220,7 @@ jQuery.fn.searchtabs = function ($panes){
             if (action){
                 content = action($this);
                 if (content){
-                    $overview.append('<dl>' + content + '</dl>');
+                    $overview.append('<dl id="field_' + $this.attr('id') + '">' + content + '</dl>');
                 }
             }
         });
@@ -221,7 +261,7 @@ jQuery.fn.searchtabs = function ($panes){
     }
     refresh();
 
-    $searchform.bind('change keypress',function (evt) {
+    $searchform.bind('change keypress submit',function (evt) {
         var $target = $(evt.target);
         if ($target.is(':input')){
             if(timeoutid){

@@ -60,6 +60,11 @@
 }
 #overview dl{
     margin-bottom:4px;
+    background: #CCCCCC;
+    width:auto;
+}
+#overview dl:hover {
+    cursor:pointer;
 }
 #overview dt,#overview dd {
     display:inline;

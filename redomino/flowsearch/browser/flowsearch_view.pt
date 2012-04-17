@@ -28,39 +28,23 @@
         <input type="hidden" name="advanced_search" value="True" />
             
         <ul id="filterpanel_filters" class="flowsearchtabs">
-            <li><a href="#" i18n:translate="">Path</a></li>
-            <li><a href="#" i18n:translate="label_search_text">Search Text</a></li>
-            <li tal:condition="usedSubjects"><a href="#" i18n:translate="label_tags">Tags</a></li>
-            <li><a href="#" i18n:translate="label_item_type">Content types</a></li>
-            <li><a href="#" i18n:translate="label_new_items_since">Date range</a></li>
-            <li tal:condition="options/show_review_state"><a href="#" i18n:translate="label_review_status">Review State</a></li>
-            <li><a href="#" i18n:translate="label_author">Contributors</a></li>
-            <li><a href="#" i18n:translate="">Sort results</a></li>
+            <li><a id="divlegend-textpanel" href="#divlegend-textpanel"
+                  i18n:translate="label_search_text">Search Text</a></li>
+            <li><a id="divlegend-pathpanel" href="#divlegend-pathpanel"
+                  i18n:translate="">Path</a></li>
+            <li tal:condition="usedSubjects">
+                <a href="#" i18n:translate="label_tags">Tags</a></li>
+            <li><a id="divlegend-typespanel" href="#divlegend-typespanel"
+                  i18n:translate="label_item_type">Content types</a></li>
+            <li><a id="divlegend-createdpanel" href="#divlegend-createdpanel"
+                  i18n:translate="label_new_items_since">Date range</a></li>
+            <li tal:condition="options/show_review_state">
+                <a id="divlegend-reviewstatepanel" href="#divlegend-reviewstatepanel"
+                  i18n:translate="label_review_status">Review State</a></li>
+            <li><a href="#" id="divlegend-creatorpanel" i18n:translate="label_author">Contributors</a></li>
+            <li><a href="#" id="divlegend-sortonpanel" i18n:translate="">Sort results</a></li>
         </ul>
         <div class="flowsearchpanes">
-            <div class="field" id="pathpanel">
-                <label i18n:translate="">Path</label>
-                <span>
-                    <div id="path_query">
-                        <label>
-                            <input type="radio" name="path.query:record" checked="checked"
-                                                tal:attributes="value python:folder_path.absolute_url_path()" />
-                            Cartella corrente
-                        </label>
-                        <label>
-                            <input class="all_site" type="radio" name="path.query:record" 
-                               tal:attributes="value python:'/'.join(portal.getPhysicalPath())" />
-                            Tutto il sito
-                        </label>
-                    </div>
-
-                    <label id="path_depth">
-                        <input type="checkbox" name="path.depth:record:int" value="1"/>
-                            Solo nella sezione corrente
-                    </label>
-                </span>
-            </div>
-
             <div class="field" id="textpanel">
                 <label for="SearchableText" i18n:translate="label_search_text">Search text</label>
 
@@ -80,6 +64,24 @@
                        />
             </div>
 
+            <div class="field" id="pathpanel">
+                <label i18n:translate="">Path</label>
+                <span>
+                    <div id="path_query">
+                        <input id="path-current-folder" type="radio" name="path.query:record" checked="checked"
+                                            tal:attributes="value python:folder_path.absolute_url_path()" />
+                        <label for="path-current-folder">Cartella corrente</label>
+                        <input id="path-all-site" class="all_site" type="radio" name="path.query:record" 
+                           tal:attributes="value python:'/'.join(portal.getPhysicalPath())" />
+                        <label for="path-all-site" >Tutto il sito</label>
+                    </div>
+
+                    <label id="path_depth">
+                        <input type="checkbox" name="path.depth:record:int" value="1"/>
+                            Solo nella sezione corrente
+                    </label>
+                </span>
+            </div>
 
             <div class="field" tal:condition="usedSubjects" id="subjectspanel">
 
@@ -372,6 +374,7 @@
         </div>
     </form>
     <h3>Parametri di ricerca</h3>
+    <span>(<a href="#" id="reset-search">Reset search</a>)</span>
     <div id="overview"></div>
     <h3>Elementi trovati</h3>
     <div id="results"></div>
