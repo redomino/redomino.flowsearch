@@ -41,12 +41,14 @@
             <li tal:condition="options/show_review_state">
                 <a id="divlegend-reviewstatepanel" href="#divlegend-reviewstatepanel"
                   i18n:translate="label_review_status">Review State</a></li>
-            <li><a href="#" id="divlegend-creatorpanel" i18n:translate="label_author">Contributors</a></li>
-            <li><a href="#" id="divlegend-sortonpanel" i18n:translate="">Sort results</a></li>
+            <li><a id="divlegend-creatorpanel" href="#divlegend-creatorpanel"
+                  i18n:translate="label_author">Contributors</a></li>
+            <li><a id="divlegend-sortonpanel" href="#divlegend-sortonpanel"
+                  i18n:translate="">Sort results</a></li>
         </ul>
         <div class="flowsearchpanes">
             <div class="field" id="textpanel">
-                <label for="SearchableText" i18n:translate="label_search_text">Search text</label>
+                <label for="SearchableText" i18n:translate="label_search_text">Search Text</label>
 
                 <div class="formHelp" i18n:translate="help_search_text">
                 For a simple text search, enter your search term
@@ -179,7 +181,7 @@
                              used_types  python:context.plone_utils.getUserFriendlyTypes(all_used_types);
                              all_checked python:(len(used_types) == len(request.get('portal_type', []))) or first_call;
                              toggle_select_state python:all_checked and 'true' or 'false';">
-                <label i18n:translate="label_item_type">Item type</label>
+                <label i18n:translate="label_item_type">Content types</label>
 
         		<div class="collapse">
                     <div class="formHelp" i18n:translate="help_search_item_type">
@@ -211,7 +213,7 @@
 
             <div class="field" id="createdpanel">
                 <label for="created"
-                       i18n:translate="label_new_items_since">New items since</label>
+                       i18n:translate="label_new_items_since">Date range</label>
 
                 <div class="collapse">
                     <div class="formHelp" i18n:translate="help_search_new_items_since">
@@ -262,7 +264,7 @@
                  tal:condition="options/show_review_state">
 
                 <label for="review_state"
-                       i18n:translate="label_review_status">Review status</label>
+                       i18n:translate="label_review_status">Review State</label>
 
                 <div class="collapse"
                      tal:define="navtree_props portal/portal_properties/navtree_properties;
@@ -301,7 +303,7 @@
 
             <div class="field" id="creatorpanel">
                 <label for="Creator"
-                       i18n:translate="label_author">Author</label>
+                       i18n:translate="label_author">Contributors</label>
 
                 <div class="collapse">
                     <div class="formHelp" i18n:translate="help_search_author">
@@ -373,10 +375,10 @@
             </span>
         </div>
     </form>
-    <h3>Parametri di ricerca</h3>
-    <span>(<a href="#" id="reset-search">Reset search</a>)</span>
+    <h3 i18n:domain="redomino.flowsearch" i18n:translate="">Search parameters</h3>
+    <span>(<a href="#" id="reset-search"  i18n:domain="redomino.flowsearch" i18n:translate="">Reset search parameters</a>)</span>
     <div id="overview"></div>
-    <h3>Elementi trovati</h3>
+    <h3 i18n:domain="redomino.flowsearch" i18n:translate="">Elements found</h3>
     <div id="results"></div>
     <script type="text/javascript" tal:attributes="src string:${portal/portal_url}/++resource++redomino.flowsearch.resources/jquery.deserialize.js"></script>
     <script type="text/javascript" tal:attributes="src string:${portal/portal_url}/++resource++redomino.flowsearch.resources/flowsearch.js"></script>

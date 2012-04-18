@@ -1,4 +1,4 @@
-# Authors: Maurizio Lupo <maurizio.lupo@redomino.com> and Andrea D'Este <andrea.deste@redomino.com>
+# Authors: Giacomo Spettoli <giacomo.spettoli@redomino.com> and Andrea D'Este <andrea.deste@redomino.com>
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2 as published
 # by the Free Software Foundation.
@@ -13,6 +13,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 # 02111-1307, USA.
 
-from zope.i18nmessageid import MessageFactory
+from zope.interface import Interface
 
-flowsearchMessageFactory = MessageFactory('redomino.flowsearch')
+class IFlowsearchLayer(Interface):
+    """ Marker interface """

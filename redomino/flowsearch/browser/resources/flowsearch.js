@@ -43,24 +43,39 @@ jQuery.fn.searchtabs = function ($panes){
 
     setup_search();
 
-    var reset_search = function (){
-        $('select#created').val('1970/02/01');
-
-        $('input[name=review_state:list]').removeAttr('checked');
-        $('input#published').removeAttr('checked');
-    
-        $('select#Creator').val("");
-        $('select#sort_on').val("");
-
-        $('input[name=portal_type:list]').removeAttr('checked');
-        $('input#SearchableText').val('');
-
-        $('input#SearchableText').change();
+    var resetpanel = {
+        textpanel : function () {
+            $('input#SearchableText').val('').change();
+        },
+        pathpanel : function () {
+            $('input[name=path.depth:record:int]').attr('checked', false).change();
+        },
+        typespanel : function () {
+            $('input[name=portal_type:list]').removeAttr('checked').change();
+        },
+        createdpanel : function (){
+            $('select#created').val('1970/02/01').change();
+        },
+        reviewstatepanel : function (){
+            $('input[name=review_state:list]').removeAttr('checked').change();
+        },
+        creatorpanel : function (){
+            var $sel = $('select#Creator');
+            if ($sel.html() == null){
+                $sel = $('#creatorpanel input');
+            };
+            $sel.val('').change();
+        },
+        sortonpanel : function (){
+            $('select#sort_on').val("").change();
+        }
     };
+
     $('#reset-search').click(function(event){
         event.preventDefault();
-        reset_search();
-        setup_search();
+        for (panel in resetpanel){
+            resetpanel[panel]();
+        } 
     });
 
     //depth
@@ -122,10 +137,14 @@ jQuery.fn.searchtabs = function ($panes){
     var write_overview = {
         pathpanel        : function ($panel){
             var label = $panel.children('label').text();
-            var value = $('#path_query input:checked').parent().text();
-            var out = '<dt>' + label + ':</dt> <dd>' + value + '</dd>';
+            var checkedradio = $('#path_query input:checked');
+            var value = $('label[for=' + checkedradio.attr('id') + ']').text();
+            var out = '<dt>' + label + ':</dt>';
+            out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value + '</a></dd>';
             $('#path_depth input:checked').each(function (){
-                out += '<dd>' + $(this).parent().text() + '</dd>';
+                out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + $(this).parent().text() + '</a>';
+                out += ' (<a class="remove-filter" href="#' + $panel.attr('id') + '">X</a>)'
+                out += '</dd>';
             });
             return out;
         },
@@ -135,7 +154,10 @@ jQuery.fn.searchtabs = function ($panes){
             if (! value.length){
                 return '';
             }
-            var out = '<dt>' + label + ':</dt> <dd>' + value + '</dd>';
+            var out = '<dt>' + label + ':</dt>';
+            out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value + '</a>';
+            out += ' (<a class="remove-filter" href="#' + $panel.attr('id') + '">X</a>)'
+            out += '</dd>';
             return out;
         },
         subjectspanel    : function ($panel){
@@ -153,7 +175,10 @@ jQuery.fn.searchtabs = function ($panes){
             if (value.length > 1){
                 var rules = ' (' + $('input[name=Subject_usage:ignore_empty]:checked').next().text() + ')';
             }
-            var out = '<dt>' + label + ':</dt> <dd>' + value.join(', ') + rules + '</dd>';
+            var out = '<dt>' + label + ':</dt>';
+            out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value.join(', ') + rules + '</a>';
+            out += ' (<a class="remove-filter" href="#' + $panel.attr('id') + '">X</a>)'
+            out += '</dd>';
             return out;
         },
         typespanel       : function ($panel){
@@ -164,7 +189,10 @@ jQuery.fn.searchtabs = function ($panes){
             if (! value.length){
                 return '';
             }
-            var out = '<dt>' + label + ':</dt> <dd>' + value.join(', ') + '</dd>';
+            var out = '<dt>' + label + ':</dt>';
+            out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value.join(', ') + '</a>';
+            out += ' (<a class="remove-filter" href="#' + $panel.attr('id') + '">X</a>)'
+            out += '</dd>';
             return out;
         },
         createdpanel     : function ($panel){
@@ -174,7 +202,10 @@ jQuery.fn.searchtabs = function ($panes){
                 return '';
             }
             var value = $opt.text();
-            var out = '<dt>' + label + ':</dt> <dd>' + value + '</dd>';
+            var out = '<dt>' + label + ':</dt>';
+            out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value + '</a>';
+            out += ' (<a class="remove-filter" href="#' + $panel.attr('id') + '">X</a>)'
+            out += '</dd>';
             return out;
         },
         reviewstatepanel : function ($panel){
@@ -185,7 +216,10 @@ jQuery.fn.searchtabs = function ($panes){
             if (! value.length){
                 return '';
             }
-            var out = '<dt>' + label + ':</dt> <dd>' + value.join(', ') + '</dd>';
+            var out = '<dt>' + label + ':</dt>';
+            out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value.join(', ') + '</a>';
+            out += ' (<a class="remove-filter" href="#' + $panel.attr('id') + '">X</a>)'
+            out += '</dd>';
             return out;
         },
         creatorpanel     : function ($panel){
@@ -195,7 +229,16 @@ jQuery.fn.searchtabs = function ($panes){
                 return '';
             }
             var value = $opt.text();
-            var out = '<dt>' + label + ':</dt> <dd>' + value + '</dd>';
+            if($opt.html() == null){
+                value = $panel.find('input[name=Creator]').val();
+            }
+            if (value == ''){
+                return '';
+            }
+            var out = '<dt>' + label + ':</dt>';
+            out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value + '</a>';
+            out += ' (<a class="remove-filter" href="#' + $panel.attr('id') + '">X</a>)'
+            out += '</dd>';
             return out;
         },
         sortonpanel      : function ($panel){
@@ -205,7 +248,10 @@ jQuery.fn.searchtabs = function ($panes){
                 return '';
             }
             var value = $opt.text();
-            var out = '<dt>' + label + ':</dt> <dd>' + value + '</dd>';
+            var out = '<dt>' + label + ':</dt>';
+            out += '<dd><a class="edit-filter" href="#' + $panel.attr('id') + '">' + value + '</a>';
+            out += ' (<a class="remove-filter" href="#' + $panel.attr('id') + '">X</a>)'
+            out += '</dd>';
             return out;
         }
     };
@@ -220,7 +266,20 @@ jQuery.fn.searchtabs = function ($panes){
             if (action){
                 content = action($this);
                 if (content){
-                    $overview.append('<dl id="field_' + $this.attr('id') + '">' + content + '</dl>');
+                    $overview.append('<dl id="parameter-' + $this.attr('id') + '">' + content + '</dl>');
+                    $('#parameter-' + $this.attr('id') + ' a.edit-filter').click(function(evt){
+                        evt.preventDefault();
+                        var nodehref = $(this).attr('href');
+                        var panel = nodehref.split('#')[1];
+                        $('#divlegend-' + panel).click();
+                    });
+                    $('#parameter-' + $this.attr('id') + ' a.remove-filter').click(function(evt){
+                        evt.preventDefault();
+                        $(this).parent().parent().fadeOut();
+                        var nodehref = $(this).attr('href');
+                        var panel = nodehref.split('#')[1];
+                        resetpanel[panel]();
+                    });
                 }
             }
         });
