@@ -5,12 +5,19 @@
       lang="en"
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="plone">
-
+<head>
+<metal:block fill-slot="top_slot" tal:define="dummy python:request.set('disable_border',1);" />
+</head>
 <body>
 
-<metal:content-core fill-slot="content-core">
+<metal:content-core fill-slot="main">
     <metal:content-core define-macro="content-core">
 
+<h1 class="documentFirstHeading">
+            <span i18n:translate="heading_search_results">
+                Search results
+            </span>
+</h1>
 
 <div class="flowsearchform"
               tal:define="DateTime python:modules['DateTime'].DateTime;
@@ -20,7 +27,7 @@
                           first_call  not:request/advanced_search|nothing;
                           usedSubjects python:context.portal_catalog.uniqueValuesFor('Subject');">
     <form action="search"
-          class="enableAutoFocus"
+          class="enableAutoFocus allowMultiSubmit"
           method="get"
           name="search"
           id="searchform">
@@ -62,7 +69,10 @@
                        id="SearchableText"
                        name="SearchableText"
                        size="25"
+                       class="inputLabel"
+                       title="Search Site"
                        tal:attributes="value python:request.get('SearchableText', '').replace('*','')"
+                       i18n:attributes="title"
                        />
             </div>
 
@@ -70,18 +80,21 @@
                 <label i18n:translate="">Path</label>
                 <span>
                     <div id="path_query">
-                        <input id="path-current-folder" type="radio" name="path.query:record" checked="checked"
-                                            tal:attributes="value python:folder_path.absolute_url_path()" />
-                        <label for="path-current-folder">Cartella corrente</label>
-                        <input id="path-all-site" class="all_site" type="radio" name="path.query:record" 
+                        <input id="path-all-site" class="all_site" type="radio" name="path.query:record" checked="checked"
                            tal:attributes="value python:'/'.join(portal.getPhysicalPath())" />
                         <label for="path-all-site" >Tutto il sito</label>
+                        <input id="path-current-folder" type="radio" name="path.query:record"
+                                            tal:attributes="value python:folder_path.absolute_url_path()" />
+                        <label for="path-current-folder">Cartella corrente</label>
                     </div>
 
-                    <label id="path_depth">
-                        <input type="checkbox" name="path.depth:record:int" value="1"/>
-                            Solo nella sezione corrente
-                    </label>
+                        <input id="path-current-folder-only" type="checkbox" name="path.depth:record:int" value="1"/>
+                        <label for="path-current-folder-only"
+                               i18n:domain="plone"
+                               i18n:translate="label_searchbox_currentfolder_only"
+                               style="cursor: pointer">
+                            only in current section
+                        </label>
                 </span>
             </div>
 
@@ -96,20 +109,6 @@
                 keywords.
                 </div>
 
-<!--                <select name="Subject:list"-->
-<!--                        id="Subject"-->
-<!--                        size="7"-->
-<!--                        multiple="multiple"-->
-<!--                        tal:define="contentSubjects context/Subject;">-->
-<!--                    <option value="#"-->
-<!--                            tal:repeat="subject usedSubjects"-->
-<!--                            tal:content="subject"-->
-<!--                            tal:attributes="value subject"-->
-<!--                            i18n:domain="plone-metadata"-->
-<!--                            i18n:translate=""-->
-<!--                            >dummy</option>-->
-<!--                </select>-->
-<!--xxx-->
                 <div>
 
                     <tal:sub tal:define="contentSubjects context/Subject"
@@ -127,30 +126,8 @@
                     </tal:sub>
                 </div>
 
-<!--                <div style="float:left; margin-right: 2em;"-->
-<!--                     tal:define="contentSubjects context/Subject;-->
-<!--                                 subjectLists python:context.createMultiColumnList(contentSubjects, numCols=3, sort_on='self');"-->
-<!--                     tal:repeat="sublist subjectLists">-->
-<!--                    <tal:items repeat="type sublist">-->
-<!--                        <input type="checkbox"-->
-<!--                               name="Subject:list"-->
-<!--                               value="#"-->
-<!--                               class="noborder"-->
-<!--                               tal:attributes="value subject;-->
-<!--                                               id string:portal_type_${repeat/sublist/number}_${repeat/type/number}"/>-->
-<!--                        <label for=""-->
-<!--                               i18n:translate=""-->
-<!--                               tal:attributes="for string:portal_type_${repeat/sublist/number}_${repeat/type/number}"-->
-<!--                               tal:content="subject"-->
-<!--                               />-->
-<!--                        <br />-->
-<!--                    </tal:items>-->
-<!--                </div>-->
                 <div class="visualClear"><!-- --></div>
 
-
-
-<!--xxx-->
                 <br />
                 <div>
                     <input type="radio"
