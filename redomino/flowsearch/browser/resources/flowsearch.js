@@ -24,20 +24,20 @@ jQuery.fn.searchtabs = function ($panes){
 
     $("#filterpanel_filters li").searchtabs($("div.flowsearchpanes > div"));
 
-    var equalHeight = function (group) {
-        var tallest = 0;
-        group.each(function() {
-            var thisHeight = $(this).height();
-            if(thisHeight > tallest) {
-                tallest = thisHeight;
-            }
-        });
-        group.height(tallest);
-    };
+//    var equalHeight = function (group) {
+//        var tallest = 0;
+//        group.each(function() {
+//            var thisHeight = $(this).height();
+//            if(thisHeight > tallest) {
+//                tallest = thisHeight;
+//            }
+//        });
+//        group.height(tallest);
+//    };
 
     var setup_search = function (){
         var tabs = $('div.field');
-        equalHeight(tabs);
+//        equalHeight(tabs);
         $('a#divlegend-textpanel').click();
         $('.flowsearchpanels SearchableText').focus();
     };

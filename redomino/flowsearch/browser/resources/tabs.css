@@ -10,6 +10,13 @@
     padding: 0;
 }
 
+.flowsearchtabs li a:before{
+    content:'► ';
+}
+.flowsearchtabs li.current a:before{
+    content:'▼ ';
+}
+
 .flowsearchtabs .current a{
     background-color: #DDDDDD;
     border-bottom: 1px solid #DDDDDD !important;
@@ -54,25 +61,26 @@
 .flowsearchpanes .field{
     margin-bottom:0;
 }
-#overview{
+#overview-wrapper{
     background-color:#DDDDDD;
     border-top-left-radius: 0.5em;
     border-top-right-radius: 0.5em;
     border-bottom-left-radius: 0.5em;
     border-bottom-right-radius: 0.5em;
-/*    padding:10px;*/
+    padding:10px;
     border: 2px solid #DDDDDD;
 /*    margin-top:1em;*/
-    float: left;
-    clear: both;
-    width: 100%;
+/*    float: left;*/
+/*    clear: both;*/
+/*    width: 98%;*/
     margin: 1em 0px;
 }
+
 #overview dl{
     margin-bottom:4px;
     background: #FFFFFF;
     float: left;
-    margin: 10px 0px 10px 10px;
+    margin: 10px 10px 10px 0;
     padding: 3px 6px;
 }
 #overview dl:hover {

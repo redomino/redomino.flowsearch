@@ -9,15 +9,15 @@
      name="redomino.flowsearch.resources"
      directory="resources"
      />
-
   <browser:page
      for="*"
      name="flowsearch"
      template="flowsearch_view.pt"
+     class=".flowsearch_view.FlowSearch"
      permission="zope2.View"
      layer=".interfaces.IFlowsearchLayer"
      />
- 
+
    <browser:viewlet
      name="plone.searchbox"
      manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
@@ -26,6 +26,7 @@
      layer=".interfaces.IFlowsearchLayer"
      template="searchbox.pt"
      />
+
 
 
 </configure>

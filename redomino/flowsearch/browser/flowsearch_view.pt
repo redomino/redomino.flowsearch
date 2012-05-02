@@ -33,12 +33,14 @@
           id="searchform">
 
         <input type="hidden" name="advanced_search" value="True" />
-            
+        <input type="hidden" name="path.query:record"
+                            tal:attributes="value python:folder_path.absolute_url_path()" />
+
         <ul id="filterpanel_filters" class="flowsearchtabs">
             <li><a id="divlegend-textpanel" href="#divlegend-textpanel"
                   i18n:translate="label_search_text">Search Text</a></li>
             <li><a id="divlegend-pathpanel" href="#divlegend-pathpanel"
-                  i18n:translate="">Path</a></li>
+                  i18n:translate="label_path_criteria_recurse">Search Sub-Folders</a></li>
             <li tal:condition="usedSubjects">
                 <a href="#" i18n:translate="label_tags">Tags</a></li>
             <li><a id="divlegend-typespanel" href="#divlegend-typespanel"
@@ -77,24 +79,33 @@
             </div>
 
             <div class="field" id="pathpanel">
-                <label i18n:translate="">Path</label>
+                <label i18n:translate="label_path_criteria_recurse">Search Sub-Folders</label>
                 <span>
-                    <div id="path_query">
-                        <input id="path-all-site" class="all_site" type="radio" name="path.query:record" checked="checked"
-                           tal:attributes="value python:'/'.join(portal.getPhysicalPath())" />
-                        <label for="path-all-site" >Tutto il sito</label>
-                        <input id="path-current-folder" type="radio" name="path.query:record"
-                                            tal:attributes="value python:folder_path.absolute_url_path()" />
-                        <label for="path-current-folder">Cartella corrente</label>
-                    </div>
-
-                        <input id="path-current-folder-only" type="checkbox" name="path.depth:record:int" value="1"/>
+                        <input id="path-current-folder-only" type="radio" name="path.depth:record:int" value="-1"/>
                         <label for="path-current-folder-only"
-                               i18n:domain="plone"
-                               i18n:translate="label_searchbox_currentfolder_only"
-                               style="cursor: pointer">
-                            only in current section
-                        </label>
+                               i18n:translate=""
+                               style="cursor: pointer">Yes</label>
+
+                        <input id="path-current-all-site" type="radio" name="path.depth:record:int" value="1"/>
+                        <label for="path-current-all-site"
+                               i18n:translate=""
+                               style="cursor: pointer">No</label>
+<!--                    <div id="path_query">-->
+<!--                        <input id="path-all-site" class="all_site" type="radio" name="path.query:record" checked="checked"-->
+<!--                           tal:attributes="value python:'/'.join(portal.getPhysicalPath())" />-->
+<!--                        <label for="path-all-site" >Tutto il sito</label>-->
+<!--                        <input id="path-current-folder" type="radio" name="path.query:record"-->
+<!--                                            tal:attributes="value python:folder_path.absolute_url_path()" />-->
+<!--                        <label for="path-current-folder">Cartella corrente</label>-->
+<!--                    </div>-->
+
+<!--                        <input id="path-current-folder-only" type="checkbox" name="path.depth:record:int" value="1"/>-->
+<!--                        <label for="path-current-folder-only"-->
+<!--                               i18n:domain="plone"-->
+<!--                               i18n:translate="label_searchbox_currentfolder_only"-->
+<!--                               style="cursor: pointer">-->
+<!--                            only in current section-->
+<!--                        </label>-->
                 </span>
             </div>
 
@@ -343,7 +354,7 @@
             <div class="visualClear" id="clear-space-before-submit"><!-- --></div>
 
             <span class="formControls">
-                <input class="context"
+                <input class="context allowMultiSubmit"
                        type="submit"
                        name="submit"
                        value="Search"
@@ -352,9 +363,12 @@
             </span>
         </div>
     </form>
-    <h3 i18n:domain="redomino.flowsearch" i18n:translate="">Search parameters</h3>
-    <span>(<a href="#" id="reset-search"  i18n:domain="redomino.flowsearch" i18n:translate="">Reset search parameters</a>)</span>
-    <div id="overview"></div>
+    <div id="overview-wrapper">
+        <h3 i18n:domain="redomino.flowsearch" i18n:translate="">Search parameters</h3>
+        <span>(<a href="#" id="reset-search"  i18n:domain="redomino.flowsearch" i18n:translate="">Reset search parameters</a>)</span>
+        <div id="overview"></div>
+        <div class="visualClear"></div>
+    </div>
     <h3 i18n:domain="redomino.flowsearch" i18n:translate="">Elements found</h3>
     <div id="results"></div>
     <script type="text/javascript" tal:attributes="src string:${portal/portal_url}/++resource++redomino.flowsearch.resources/jquery.deserialize.js"></script>

@@ -1,10 +1,12 @@
 <div id="portal-searchbox"
      i18n:domain="plone"
      tal:define="navigation_root_url view/navigation_root_url;
-                 search_input_id view/search_input_id;">
+                 search_input_id view/search_input_id;
+                 folder_brain context/@@plone_context_state/folder">
+
     <form name="searchform" id="searchGadget_form" 
           action="search"
-          tal:attributes="action string:${navigation_root_url}/@@flowsearch;
+          tal:attributes="action string:${folder_brain/absolute_url}/@@flowsearch;
           id string:${search_input_id}_form">
 
         <div class="LSBox">
@@ -32,6 +34,7 @@
             <input id="searchbox_currentfolder_only"
                    class="noborder"
                    type="checkbox"
+                   checked="checked"
                    name="path"
                    tal:attributes="value view/folder_path"
                    />
