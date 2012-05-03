@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-04-17 15:24+0000\n"
+"POT-Creation-Date: 2012-05-03 12:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,15 +14,54 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: ./browser/flowsearch_view.pt:379
+#: ./browser/flowsearch_view.pt:418
 msgid "Elements found"
 msgstr "Elementi trovati"
 
-#: ./browser/flowsearch_view.pt:377
+#: ./browser/flowsearch_view.pt:414
 msgid "Reset search parameters"
 msgstr "Rimuovi tutti i parametri di ricerca"
 
-#: ./browser/flowsearch_view.pt:376
+#: ./browser/flowsearch_view.pt:413
 msgid "Search parameters"
 msgstr "Parametri di ricerca"
+
+#: ./browser/flowsearch_view.pt:76
+msgid "Sort"
+msgstr "Ordina"
+
+#. Default: "Contributors"
+#: ./browser/flowsearch_view.pt:74
+msgid "label_author"
+msgstr "Autore"
+
+#. Default: "Date range"
+#: ./browser/flowsearch_view.pt:69
+msgid "label_date_range"
+msgstr "Intervallo date"
+
+#. Default: "Content types"
+#: ./browser/flowsearch_view.pt:67
+msgid "label_item_type"
+msgstr "Tipo contenuto"
+
+#. Default: "Sub-Folders"
+#: ./browser/flowsearch_view.pt:62
+msgid "label_path"
+msgstr "Sotto cartelle"
+
+#. Default: "Review State"
+#: ./browser/flowsearch_view.pt:72
+msgid "label_state"
+msgstr "Stato"
+
+#. Default: "Tags"
+#: ./browser/flowsearch_view.pt:65
+msgid "label_tags"
+msgstr "Categorie"
+
+#. Default: "Text"
+#: ./browser/flowsearch_view.pt:60
+msgid "label_text"
+msgstr "Testo"
 

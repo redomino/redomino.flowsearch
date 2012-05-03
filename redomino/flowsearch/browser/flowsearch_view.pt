@@ -10,14 +10,18 @@
 </head>
 <body>
 
-<metal:content-core fill-slot="main">
-    <metal:content-core define-macro="content-core">
+<!--<metal:content-core fill-slot="main">-->
+<!--    <metal:content-core define-macro="content-core">-->
 
-<h1 class="documentFirstHeading">
-            <span i18n:translate="heading_search_results">
-                Search results
-            </span>
-</h1>
+<metal:content-core fill-slot="content-core">
+<!--    <metal:content-core define-macro="content-core">-->
+
+
+<!--<h1 class="documentFirstHeading">-->
+<!--            <span i18n:translate="heading_search_results">-->
+<!--                Search results-->
+<!--            </span>-->
+<!--</h1>-->
 
 <div class="flowsearchform"
               tal:define="DateTime python:modules['DateTime'].DateTime;
@@ -32,29 +36,65 @@
           name="search"
           id="searchform">
 
+        <noscript>
+            <style>
+#filterpanel_filters{
+    display:none !important;
+}
+.flowsearchpanes > div.field{
+    display:block !important;
+}
+#overview-wrapper, #results, .flowsearchform > h3{
+    display:none !important;
+}
+            </style>
+
+        </noscript>
+
         <input type="hidden" name="advanced_search" value="True" />
         <input type="hidden" name="path.query:record"
                             tal:attributes="value python:folder_path.absolute_url_path()" />
 
-        <ul id="filterpanel_filters" class="flowsearchtabs">
+        <div class="filter_by">Filtra per:&nbsp;</div>
+        <ul id="filterpanel_filters" class="flowsearchtabs" i18n:domain="redomino.flowsearch">
             <li><a id="divlegend-textpanel" href="#divlegend-textpanel"
-                  i18n:translate="label_search_text">Search Text</a></li>
+                  i18n:translate="label_text">Text</a></li>
             <li><a id="divlegend-pathpanel" href="#divlegend-pathpanel"
-                  i18n:translate="label_path_criteria_recurse">Search Sub-Folders</a></li>
+                  i18n:translate="label_path">Sub-Folders</a></li>
             <li tal:condition="usedSubjects">
-                <a href="#" i18n:translate="label_tags">Tags</a></li>
+                <a id="divlegend-subjectspanel" href="#divlegend-subjectspanel"
+                   i18n:translate="label_tags">Tags</a></li>
             <li><a id="divlegend-typespanel" href="#divlegend-typespanel"
                   i18n:translate="label_item_type">Content types</a></li>
             <li><a id="divlegend-createdpanel" href="#divlegend-createdpanel"
-                  i18n:translate="label_new_items_since">Date range</a></li>
+                  i18n:translate="label_date_range">Date range</a></li>
             <li tal:condition="options/show_review_state">
                 <a id="divlegend-reviewstatepanel" href="#divlegend-reviewstatepanel"
-                  i18n:translate="label_review_status">Review State</a></li>
+                  i18n:translate="label_state">Review State</a></li>
             <li><a id="divlegend-creatorpanel" href="#divlegend-creatorpanel"
                   i18n:translate="label_author">Contributors</a></li>
             <li><a id="divlegend-sortonpanel" href="#divlegend-sortonpanel"
-                  i18n:translate="">Sort results</a></li>
+                  i18n:translate="">Sort</a></li>
         </ul>
+<!--        <ul id="filterpanel_filters" class="flowsearchtabs">-->
+<!--            <li><a id="divlegend-textpanel" href="#divlegend-textpanel"-->
+<!--                  i18n:translate="label_search_text">Search Text</a></li>-->
+<!--            <li><a id="divlegend-pathpanel" href="#divlegend-pathpanel"-->
+<!--                  i18n:translate="label_path_criteria_recurse">Search Sub-Folders</a></li>-->
+<!--            <li tal:condition="usedSubjects">-->
+<!--                <a href="#" i18n:translate="label_tags">Tags</a></li>-->
+<!--            <li><a id="divlegend-typespanel" href="#divlegend-typespanel"-->
+<!--                  i18n:translate="label_item_type">Content types</a></li>-->
+<!--            <li><a id="divlegend-createdpanel" href="#divlegend-createdpanel"-->
+<!--                  i18n:translate="label_new_items_since">Date range</a></li>-->
+<!--            <li tal:condition="options/show_review_state">-->
+<!--                <a id="divlegend-reviewstatepanel" href="#divlegend-reviewstatepanel"-->
+<!--                  i18n:translate="label_review_status">Review State</a></li>-->
+<!--            <li><a id="divlegend-creatorpanel" href="#divlegend-creatorpanel"-->
+<!--                  i18n:translate="label_author">Contributors</a></li>-->
+<!--            <li><a id="divlegend-sortonpanel" href="#divlegend-sortonpanel"-->
+<!--                  i18n:translate="">Sort results</a></li>-->
+<!--        </ul>-->
         <div class="flowsearchpanes">
             <div class="field" id="textpanel">
                 <label for="SearchableText" i18n:translate="label_search_text">Search Text</label>
@@ -71,25 +111,30 @@
                        id="SearchableText"
                        name="SearchableText"
                        size="25"
-                       class="inputLabel"
                        title="Search Site"
                        tal:attributes="value python:request.get('SearchableText', '').replace('*','')"
                        i18n:attributes="title"
                        />
+<!--                       class="inputLabel"-->
             </div>
 
             <div class="field" id="pathpanel">
                 <label i18n:translate="label_path_criteria_recurse">Search Sub-Folders</label>
                 <span>
-                        <input id="path-current-folder-only" type="radio" name="path.depth:record:int" value="-1"/>
+                        <input id="path-current-folder-only" type="radio" checked="checked" name="path.depth:record:int" value="-1"/>
                         <label for="path-current-folder-only"
                                i18n:translate=""
                                style="cursor: pointer">Yes</label>
+
+<!--        <input type="hidden" name="path.navtree_start:int" value="1"/>-->
+<!--        <input type="hidden" name="path.level:int" value="3"/>-->
+
 
                         <input id="path-current-all-site" type="radio" name="path.depth:record:int" value="1"/>
                         <label for="path-current-all-site"
                                i18n:translate=""
                                style="cursor: pointer">No</label>
+
 <!--                    <div id="path_query">-->
 <!--                        <input id="path-all-site" class="all_site" type="radio" name="path.query:record" checked="checked"-->
 <!--                           tal:attributes="value python:'/'.join(portal.getPhysicalPath())" />-->
@@ -364,18 +409,20 @@
         </div>
     </form>
     <div id="overview-wrapper">
-        <h3 i18n:domain="redomino.flowsearch" i18n:translate="">Search parameters</h3>
+        <h3><span i18n:domain="redomino.flowsearch" i18n:translate="">Search parameters</span>
         <span>(<a href="#" id="reset-search"  i18n:domain="redomino.flowsearch" i18n:translate="">Reset search parameters</a>)</span>
+        </h3>
         <div id="overview"></div>
         <div class="visualClear"></div>
     </div>
+
     <h3 i18n:domain="redomino.flowsearch" i18n:translate="">Elements found</h3>
     <div id="results"></div>
     <script type="text/javascript" tal:attributes="src string:${portal/portal_url}/++resource++redomino.flowsearch.resources/jquery.deserialize.js"></script>
     <script type="text/javascript" tal:attributes="src string:${portal/portal_url}/++resource++redomino.flowsearch.resources/flowsearch.js"></script>
 </div>
 
-    </metal:content-core>
+<!--    </metal:content-core>-->
 </metal:content-core>
 </html>
 

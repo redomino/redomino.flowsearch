@@ -17,28 +17,21 @@ jQuery.fn.searchtabs = function ($panes){
 (function ($){
     // hide with javascript only
 //    $('.field > label, .field  .formHelp').hide();
-    $('.field > label').hide();
-//    $('.formControls').hide()
+//    $('.field > label').hide();
+
+    $('.field  .formHelp').hide();
+
+    $('.formControls').hide()
     // tab
 //    $("ul#filterpanel_filters").tabs("div.flowsearchpanes > div");
 
     $("#filterpanel_filters li").searchtabs($("div.flowsearchpanes > div"));
 
-//    var equalHeight = function (group) {
-//        var tallest = 0;
-//        group.each(function() {
-//            var thisHeight = $(this).height();
-//            if(thisHeight > tallest) {
-//                tallest = thisHeight;
-//            }
-//        });
-//        group.height(tallest);
-//    };
+
 
     var setup_search = function (){
         var tabs = $('div.field');
-//        equalHeight(tabs);
-        $('a#divlegend-textpanel').click();
+//        $('a#divlegend-textpanel').click();
         $('.flowsearchpanels SearchableText').focus();
     };
 
@@ -49,7 +42,8 @@ jQuery.fn.searchtabs = function ($panes){
             $('input#SearchableText').val('').change();
         },
         pathpanel : function () {
-            $('input[name=path.depth:record:int]').attr('checked', false).change();
+            $('input[name=path.depth:record:int]').first().attr('checked', true).change();
+            $('input[name=path.depth:record:int]').last().attr('checked', false).change();
         },
         typespanel : function () {
             $('input[name=portal_type:list]').removeAttr('checked').change();
@@ -69,14 +63,19 @@ jQuery.fn.searchtabs = function ($panes){
         },
         sortonpanel : function (){
             $('select#sort_on').val("").change();
+        },
+        subjectspanel : function (){
+            $('#subjectspanel input:checkbox').removeAttr('checked').change();
         }
+
     };
 
     $('#reset-search').click(function(event){
-        event.preventDefault();
+        var panel;
         for (panel in resetpanel){
             resetpanel[panel]();
-        } 
+        }
+        return false;
     });
 
     //depth
@@ -138,16 +137,22 @@ jQuery.fn.searchtabs = function ($panes){
     var write_overview = {
         pathpanel        : function ($panel){
             var label = $panel.children('label').text();
-            var checkedradio = $('#path_query input:checked');
+            var checkedradio = $panel.find('input:checked');
             var value = $('label[for=' + checkedradio.attr('id') + ']').text();
+            
+
             var out = '<dt>' + label + ':</dt>';
             out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value + '</a></dd>';
-            $('#path_depth input:checked').each(function (){
-                out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + $(this).parent().text() + '</a>';
-//            out += ' <a class="remove-filter" href="#' + $panel.attr('id') + '">x</a>'
-            out += ' <span class="remove-filter"><a href="#' + $panel.attr('id') + '">x</a></span>'
-                out += '</dd>';
-            });
+
+
+
+
+//            $('#path_depth input:checked').each(function (){
+//                out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + $(this).parent().text() + '</a>';
+////            out += ' <a class="remove-filter" href="#' + $panel.attr('id') + '">x</a>'
+//            out += ' <span class="remove-filter"><a href="#' + $panel.attr('id') + '">x</a></span>'
+//                out += '</dd>';
+//            });
             return out;
         },
         textpanel        : function ($panel){
@@ -286,7 +291,6 @@ jQuery.fn.searchtabs = function ($panes){
                         evt.preventDefault();
                         $(this).parent().parent().parent().fadeOut();
                         var nodehref = $(this).attr('href');
-                        console.log(nodehref);
                         var panel = nodehref.split('#')[1];
                         resetpanel[panel]();
                     });
@@ -356,6 +360,15 @@ jQuery.fn.searchtabs = function ($panes){
         }
 
     });
+
+
+    $('#portal-breadcrumbs a').click(function (){
+        var href = $(this).attr('href');
+        var hash = window.location.hash;
+        window.location = href + '/@@flowsearch' + hash;
+        return false;
+    });
+
     
 }(jQuery));
 
