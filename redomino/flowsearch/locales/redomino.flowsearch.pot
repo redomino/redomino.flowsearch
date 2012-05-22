@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-05-03 12:36+0000\n"
+"POT-Creation-Date: 2012-05-22 12:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,54 +17,73 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: redomino.flowsearch\n"
 
-#: ./browser/flowsearch_view.pt:418
+#: ./browser/flowsearch_view.pt:34
+msgid "Back to content"
+msgstr ""
+
+#: ./browser/flowsearch_view.pt:465
 msgid "Elements found"
 msgstr ""
 
-#: ./browser/flowsearch_view.pt:414
-msgid "Reset search parameters"
+#: ./browser/flowsearch_view.pt:412
+msgid "Reset all"
 msgstr ""
 
-#: ./browser/flowsearch_view.pt:413
-msgid "Search parameters"
+#: ./browser/flowsearch_view.pt:411
+msgid "Search criteria"
 msgstr ""
 
-#: ./browser/flowsearch_view.pt:76
+#: ./browser/flowsearch_view.pt:78
 msgid "Sort"
 msgstr ""
 
+#. Default: "Return items matching some or all of these tags."
+#: ./browser/flowsearch_view.pt:163
+msgid "help_search_tags"
+msgstr ""
+
 #. Default: "Contributors"
-#: ./browser/flowsearch_view.pt:74
+#: ./browser/flowsearch_view.pt:76
 msgid "label_author"
 msgstr ""
 
 #. Default: "Date range"
-#: ./browser/flowsearch_view.pt:69
+#: ./browser/flowsearch_view.pt:71
 msgid "label_date_range"
 msgstr ""
 
 #. Default: "Content types"
-#: ./browser/flowsearch_view.pt:67
+#: ./browser/flowsearch_view.pt:69
 msgid "label_item_type"
 msgstr ""
 
 #. Default: "Sub-Folders"
-#: ./browser/flowsearch_view.pt:62
+#: ./browser/flowsearch_view.pt:64
 msgid "label_path"
 msgstr ""
 
+#. Default: "Search also in SubFolders"
+#: ./browser/flowsearch_view.pt:124
+msgid "label_path_criteria_recurse"
+msgstr ""
+
 #. Default: "Review State"
-#: ./browser/flowsearch_view.pt:72
+#: ./browser/flowsearch_view.pt:74
 msgid "label_state"
 msgstr ""
 
 #. Default: "Tags"
-#: ./browser/flowsearch_view.pt:65
+#: ./browser/flowsearch_view.pt:67
 msgid "label_tags"
 msgstr ""
 
 #. Default: "Text"
-#: ./browser/flowsearch_view.pt:60
+#: ./browser/flowsearch_view.pt:62
 msgid "label_text"
+msgstr ""
+
+#. Default: "Search position:"
+#: ./browser/flowsearch_view.pt:423
+msgid "you_are_searching_here"
 msgstr ""
 

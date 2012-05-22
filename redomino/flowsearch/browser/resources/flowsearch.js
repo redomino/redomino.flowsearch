@@ -19,7 +19,7 @@ jQuery.fn.searchtabs = function ($panes){
 //    $('.field > label, .field  .formHelp').hide();
 //    $('.field > label').hide();
 
-    $('.field  .formHelp').hide();
+//    $('.field  .formHelp').hide();
 
     $('.formControls').hide()
     // tab
@@ -362,7 +362,7 @@ jQuery.fn.searchtabs = function ($panes){
     });
 
 
-    $('#portal-breadcrumbs a').click(function (){
+    $('#flowsearch-breadcrumbs a').click(function (){
         var href = $(this).attr('href');
         var hash = window.location.hash;
         window.location = href + '/@@flowsearch' + hash;

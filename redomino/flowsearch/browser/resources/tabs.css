@@ -2,11 +2,6 @@
     font-size:11px;
 }
 
-.filter_by{
-    float:left;
-    font-size: 12px;
-    margin-top: 5px;
-}
 .flowsearchtabs {
     height: 20px;
     margin: 0 !important;
@@ -86,11 +81,11 @@
 }
 
 #overview dl{
-    margin-bottom:4px;
     background: #FFFFFF;
     float: left;
-    margin: 10px 10px 10px 0;
+    margin: 4px 6px 4px 0;
     padding: 3px 6px;
+    height:21px;
 }
 #overview dl:hover {
     cursor:pointer;

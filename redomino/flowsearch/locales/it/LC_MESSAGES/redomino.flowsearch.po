@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-05-03 12:36+0000\n"
+"POT-Creation-Date: 2012-05-22 12:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,54 +14,73 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: ./browser/flowsearch_view.pt:418
+#: ./browser/flowsearch_view.pt:34
+msgid "Back to content"
+msgstr "Torna al contenuto"
+
+#: ./browser/flowsearch_view.pt:465
 msgid "Elements found"
 msgstr "Elementi trovati"
 
-#: ./browser/flowsearch_view.pt:414
-msgid "Reset search parameters"
-msgstr "Rimuovi tutti i parametri di ricerca"
+#: ./browser/flowsearch_view.pt:412
+msgid "Reset all"
+msgstr "Rimuovi tutti"
 
-#: ./browser/flowsearch_view.pt:413
-msgid "Search parameters"
-msgstr "Parametri di ricerca"
+#: ./browser/flowsearch_view.pt:411
+msgid "Search criteria"
+msgstr "Criteri di ricerca"
 
-#: ./browser/flowsearch_view.pt:76
+#: ./browser/flowsearch_view.pt:78
 msgid "Sort"
 msgstr "Ordina"
 
+#. Default: "Return items matching some or all of these tags."
+#: ./browser/flowsearch_view.pt:163
+msgid "help_search_tags"
+msgstr "Mostra gli elementi etichettati con uno di questi tag."
+
 #. Default: "Contributors"
-#: ./browser/flowsearch_view.pt:74
+#: ./browser/flowsearch_view.pt:76
 msgid "label_author"
 msgstr "Autore"
 
 #. Default: "Date range"
-#: ./browser/flowsearch_view.pt:69
+#: ./browser/flowsearch_view.pt:71
 msgid "label_date_range"
 msgstr "Intervallo date"
 
 #. Default: "Content types"
-#: ./browser/flowsearch_view.pt:67
+#: ./browser/flowsearch_view.pt:69
 msgid "label_item_type"
 msgstr "Tipo contenuto"
 
 #. Default: "Sub-Folders"
-#: ./browser/flowsearch_view.pt:62
+#: ./browser/flowsearch_view.pt:64
 msgid "label_path"
 msgstr "Sotto cartelle"
 
+#. Default: "Search also in SubFolders"
+#: ./browser/flowsearch_view.pt:124
+msgid "label_path_criteria_recurse"
+msgstr "Cerca anche nelle sottocartelle"
+
 #. Default: "Review State"
-#: ./browser/flowsearch_view.pt:72
+#: ./browser/flowsearch_view.pt:74
 msgid "label_state"
 msgstr "Stato"
 
 #. Default: "Tags"
-#: ./browser/flowsearch_view.pt:65
+#: ./browser/flowsearch_view.pt:67
 msgid "label_tags"
 msgstr "Categorie"
 
 #. Default: "Text"
-#: ./browser/flowsearch_view.pt:60
+#: ./browser/flowsearch_view.pt:62
 msgid "label_text"
 msgstr "Testo"
+
+#. Default: "Search position:"
+#: ./browser/flowsearch_view.pt:423
+msgid "you_are_searching_here"
+msgstr "Posizione di ricerca:"
 

@@ -6,7 +6,7 @@
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="plone">
 <head>
-<metal:block fill-slot="top_slot" tal:define="dummy python:request.set('disable_border',1);" />
+<!--<metal:block fill-slot="top_slot" tal:define="dummy python:request.set('disable_border',1);" />-->
 </head>
 <body>
 
@@ -30,6 +30,13 @@
                           options context/@@searchform-options;
                           first_call  not:request/advanced_search|nothing;
                           usedSubjects python:context.portal_catalog.uniqueValuesFor('Subject');">
+
+    <a tal:attributes="href string:${context/absolute_url}/view" i18n:domain="redomino.flowsearch" i18n:translate="">Back to content</a>
+    <div id="overview-wrapper">
+        <h3><span i18n:domain="redomino.flowsearch" i18n:translate="">Search criteria</span>
+        <span>(<a href="#" id="reset-search"  i18n:domain="redomino.flowsearch" i18n:translate="">Reset all</a>)</span>
+        </h3>
+
     <form action="search"
           class="enableAutoFocus allowMultiSubmit"
           method="get"
@@ -55,7 +62,7 @@
         <input type="hidden" name="path.query:record"
                             tal:attributes="value python:folder_path.absolute_url_path()" />
 
-        <div class="filter_by">Filtra per:&nbsp;</div>
+<!--        <div class="filter_by">Filtra per:&nbsp;</div>-->
         <ul id="filterpanel_filters" class="flowsearchtabs" i18n:domain="redomino.flowsearch">
             <li><a id="divlegend-textpanel" href="#divlegend-textpanel"
                   i18n:translate="label_text">Text</a></li>
@@ -119,7 +126,7 @@
             </div>
 
             <div class="field" id="pathpanel">
-                <label i18n:translate="label_path_criteria_recurse">Search Sub-Folders</label>
+                <label i18n:domain="redomino.flowsearch" i18n:translate="label_path_criteria_recurse">Search also in SubFolders</label>
                 <span>
                         <input id="path-current-folder-only" type="radio" checked="checked" name="path.depth:record:int" value="-1"/>
                         <label for="path-current-folder-only"
@@ -158,11 +165,8 @@
 
                 <label for="Subject" i18n:translate="label_tags">Tags</label>
 
-                <div class="formHelp" i18n:translate="help_search_tags">
+                <div class="formHelp" i18n:domain="redomino.flowsearch" i18n:translate="help_search_tags">
                 Return items matching some or all of these tags.
-                Multiple words may be found by pressing <strong>Ctrl</strong>
-                (or <strong>Apple</strong> key on Mac) while clicking the
-                keywords.
                 </div>
 
                 <div>
@@ -408,10 +412,53 @@
             </span>
         </div>
     </form>
-    <div id="overview-wrapper">
-        <h3><span i18n:domain="redomino.flowsearch" i18n:translate="">Search parameters</span>
-        <span>(<a href="#" id="reset-search"  i18n:domain="redomino.flowsearch" i18n:translate="">Reset search parameters</a>)</span>
-        </h3>
+
+
+
+
+
+<span id="flowsearch-breadcrumbs"
+     tal:define="breadcrumbs view/breadcrumbs;
+                 is_rtl view/is_rtl">
+
+    <span id="flowsearch-breadcrumbs-you-are-here" i18n:domain="redomino.flowsearch" i18n:translate="you_are_searching_here">Search position:</span>
+    <span id="flowsearch-breadcrumbs-home">
+        <a i18n:translate="tabs_home"
+           tal:attributes="href view/navigation_root_url">Home</a>
+        <span tal:condition="breadcrumbs" class="breadcrumbSeparator">
+            <tal:ltr condition="not: is_rtl">&rsaquo;</tal:ltr>
+            <tal:rtl condition="is_rtl">&lsaquo;</tal:rtl>
+        </span>
+    </span>
+    <span tal:repeat="crumb breadcrumbs"
+          tal:attributes="dir python:is_rtl and 'rtl' or 'ltr';
+                          id string:flowsearch-breadcrumbs-${repeat/crumb/number}">
+        <tal:item tal:define="is_last repeat/crumb/end;
+                              url crumb/absolute_url;
+                              title crumb/Title">
+            <a href="#"
+               tal:omit-tag="not: url"
+               tal:condition="python:not is_last"
+               tal:attributes="href url"
+               tal:content="title">
+                crumb
+            </a>
+            <span class="breadcrumbSeparator" tal:condition="not: is_last">
+                <tal:ltr condition="not: is_rtl">&rsaquo;</tal:ltr>
+                <tal:rtl condition="is_rtl">&lsaquo;</tal:rtl>
+            </span>
+            <span id="breadcrumbs-current"
+                  tal:condition="is_last"
+                  tal:content="title">crumb</span>
+         </tal:item>
+    </span>
+
+</span>
+
+
+
+
+
         <div id="overview"></div>
         <div class="visualClear"></div>
     </div>
