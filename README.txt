@@ -11,13 +11,13 @@ current position in the website, therefore the position you're searching in.
 Furthermore, redomino.flowsearch features search parameters that have been capitalized according on Plone's 
 characteristics and provided information. Search parameters are:
 
-- Search text
-- Path
-- Content types
-- Date range
-- Review state
-- Contributors
-- Sort results by...
+    - Search text
+    - Path
+    - Content types
+    - Date range
+    - Review state
+    - Contributors
+    - Sort results by...
 
 Screenshot:
 

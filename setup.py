@@ -20,7 +20,7 @@ version = '0.4.dev0'
 
 setup(name='redomino.flowsearch',
       version=version,
-      description="",
+      description="Redomino Flowsearch is a new plugin for Plone CMS that provides an advanced search view",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
@@ -29,10 +29,10 @@ setup(name='redomino.flowsearch',
         "Framework :: Plone",
         "Programming Language :: Python",
         ],
-      keywords='',
-      author='',
-      author_email='',
-      url='http://svn.plone.org/svn/collective/',
+      keywords='plone search',
+      author='Maurizio Lupo',
+      author_email='maurizio.lupo@redomino.com',
+      url='https://github.com/redomino/redomino.flowsearch',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['redomino'],
