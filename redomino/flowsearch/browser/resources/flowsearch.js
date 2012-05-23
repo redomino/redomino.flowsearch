@@ -1,6 +1,6 @@
 jQuery.fn.searchtabs = function ($panes){
     this.click(function (){
-        var $this = $(this);
+        var $this = jQuery(this);
         var index = $this.index();
         var $currentpane = $panes.eq(index);
         $currentpane.toggle();
@@ -8,7 +8,7 @@ jQuery.fn.searchtabs = function ($panes){
         $this.toggleClass('current');
 
         $panes.not($currentpane).hide();
-        $this.siblings().removeClass('current')
+        $this.siblings().removeClass('current');
         return false;
     });
 };
@@ -21,7 +21,7 @@ jQuery.fn.searchtabs = function ($panes){
 
 //    $('.field  .formHelp').hide();
 
-    $('.formControls').hide()
+    $('.formControls').hide();
     // tab
 //    $("ul#filterpanel_filters").tabs("div.flowsearchpanes > div");
 
@@ -56,9 +56,9 @@ jQuery.fn.searchtabs = function ($panes){
         },
         creatorpanel : function (){
             var $sel = $('select#Creator');
-            if ($sel.html() == null){
+            if ($sel.html() === null){
                 $sel = $('#creatorpanel input');
-            };
+            }
             $sel.val('').change();
         },
         sortonpanel : function (){
@@ -149,8 +149,8 @@ jQuery.fn.searchtabs = function ($panes){
 
 //            $('#path_depth input:checked').each(function (){
 //                out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + $(this).parent().text() + '</a>';
-////            out += ' <a class="remove-filter" href="#' + $panel.attr('id') + '">x</a>'
-//            out += ' <span class="remove-filter"><a href="#' + $panel.attr('id') + '">x</a></span>'
+////            out += ' <a class="remove-filter resetbutton" href="#' + $panel.attr('id') + '">⨯</a>'
+//            out += ' <span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>'
 //                out += '</dd>';
 //            });
             return out;
@@ -159,13 +159,13 @@ jQuery.fn.searchtabs = function ($panes){
             var label = $panel.children('label').text();
             var value = $panel.find('#SearchableText').val();
             var title = $panel.find('#SearchableText').attr('title');
-            if (! value.length || value == title){
+            if (! value.length || value === title){
                 return '';
             }
             var out = '<dt>' + label + ':</dt>';
             out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value + '</a>';
-//            out += ' <a class="remove-filter" href="#' + $panel.attr('id') + '">x</a>'
-            out += ' <span class="remove-filter"><a href="#' + $panel.attr('id') + '">x</a></span>'
+//            out += ' <a class="remove-filter resetbutton" href="#' + $panel.attr('id') + '">⨯</a>'
+            out += ' <span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
             out += '</dd>';
             return out;
         },
@@ -182,12 +182,12 @@ jQuery.fn.searchtabs = function ($panes){
             }
 
             if (value.length > 1){
-                var rules = ' (' + $('input[name=Subject_usage:ignore_empty]:checked').next().text() + ')';
+                rules = ' (' + $('input[name=Subject_usage:ignore_empty]:checked').next().text() + ')';
             }
             var out = '<dt>' + label + ':</dt>';
             out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value.join(', ') + rules + '</a>';
-//            out += ' <a class="remove-filter" href="#' + $panel.attr('id') + '">x</a>'
-            out += ' <span class="remove-filter"><a href="#' + $panel.attr('id') + '">x</a></span>'
+//            out += ' <a class="remove-filter resetbutton" href="#' + $panel.attr('id') + '">⨯</a>'
+            out += ' <span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
             out += '</dd>';
             return out;
         },
@@ -201,8 +201,8 @@ jQuery.fn.searchtabs = function ($panes){
             }
             var out = '<dt>' + label + ':</dt>';
             out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value.join(', ') + '</a>';
-//            out += ' <a class="remove-filter" href="#' + $panel.attr('id') + '">x</a>'
-            out += ' <span class="remove-filter"><a href="#' + $panel.attr('id') + '">x</a></span>'
+//            out += ' <a class="remove-filter resetbutton" href="#' + $panel.attr('id') + '">⨯</a>'
+            out += ' <span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
             out += '</dd>';
             return out;
         },
@@ -215,8 +215,8 @@ jQuery.fn.searchtabs = function ($panes){
             var value = $opt.text();
             var out = '<dt>' + label + ':</dt>';
             out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value + '</a>';
-//            out += ' <a class="remove-filter" href="#' + $panel.attr('id') + '">x</a>'
-            out += ' <span class="remove-filter"><a href="#' + $panel.attr('id') + '">x</a></span>'
+//            out += ' <a class="remove-filter resetbutton" href="#' + $panel.attr('id') + '">⨯</a>'
+            out += ' <span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
             out += '</dd>';
             return out;
         },
@@ -230,8 +230,8 @@ jQuery.fn.searchtabs = function ($panes){
             }
             var out = '<dt>' + label + ':</dt>';
             out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value.join(', ') + '</a>';
-//            out += ' <a class="remove-filter" href="#' + $panel.attr('id') + '">x</a>'
-            out += ' <span class="remove-filter"><a href="#' + $panel.attr('id') + '">x</a></span>'
+//            out += ' <a class="remove-filter resetbutton" href="#' + $panel.attr('id') + '">⨯</a>'
+            out += ' <span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
             out += '</dd>';
             return out;
         },
@@ -245,13 +245,13 @@ jQuery.fn.searchtabs = function ($panes){
             if($opt.html() == null){
                 value = $panel.find('input[name=Creator]').val();
             }
-            if (value == ''){
+            if (value === ''){
                 return '';
             }
             var out = '<dt>' + label + ':</dt>';
             out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value + '</a>';
-//            out += ' <a class="remove-filter" href="#' + $panel.attr('id') + '">x</a>'
-            out += ' <span class="remove-filter"><a href="#' + $panel.attr('id') + '">x</a></span>'
+//            out += ' <a class="remove-filter resetbutton" href="#' + $panel.attr('id') + '">⨯</a>';
+            out += ' <span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
             out += '</dd>';
             return out;
         },
@@ -264,7 +264,7 @@ jQuery.fn.searchtabs = function ($panes){
             var value = $opt.text();
             var out = '<dt>' + label + ':</dt>';
             out += '<dd><a class="edit-filter" href="#' + $panel.attr('id') + '">' + value + '</a>';
-            out += ' <span class="remove-filter"><a href="#' + $panel.attr('id') + '">x</a></span>'
+            out += ' <span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
             out += '</dd>';
             return out;
         }
