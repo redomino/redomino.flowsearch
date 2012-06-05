@@ -58,7 +58,6 @@
 .flowsearchpanes > div {
     background-color: #DDDDDD;
     display: none;
-   /* min-height: 200px;*/
     padding: 10px 10px;
 }
 
@@ -73,33 +72,23 @@
     border-bottom-right-radius: 0.5em;
     padding:10px;
     border: 2px solid #DDDDDD;
-/*    margin-top:1em;*/
-/*    float: left;*/
-/*    clear: both;*/
-/*    width: 98%;*/
     margin: 1em 0px;
 }
 
-#overview dl{
+#overview .overview-item{
     background: #FFFFFF;
     float: left;
     margin: 4px 6px 4px 0;
     padding: 3px 6px;
     height:21px;
 }
-#overview dl:hover {
-    cursor:pointer;
-}
-#overview dt,#overview dd {
-    display:inline;
-    margin:0;
-    margin-left:3px;
+
+#overview .remove-filter{
+    padding:0 4px;
 }
 
 #results {
     border-top: 2px solid #DDDDDD;
-
-/*    margin-top:1em;*/
 }
 
 #content #reset-search{

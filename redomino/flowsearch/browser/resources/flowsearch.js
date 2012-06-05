@@ -107,7 +107,7 @@ jQuery.fn.searchtabs = function ($panes){
     });
 
     var timeoutid;
-    var $searchform = $('#searchform');
+    var $searchform = $('#flowsearchform');
     var $all_results = $('#results');
 
     var append_search = function (url){
@@ -141,8 +141,8 @@ jQuery.fn.searchtabs = function ($panes){
             var value = $('label[for=' + checkedradio.attr('id') + ']').text();
             
 
-            var out = '<dt>' + label + ':</dt>';
-            out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value + '</a></dd>';
+            var out = '<span class="label">' + label + ':</span>';
+            out += '<span><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value + '</a></span>';
 
 
 
@@ -162,11 +162,10 @@ jQuery.fn.searchtabs = function ($panes){
             if (! value.length || value === title){
                 return '';
             }
-            var out = '<dt>' + label + ':</dt>';
-            out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value + '</a>';
-//            out += ' <a class="remove-filter resetbutton" href="#' + $panel.attr('id') + '">⨯</a>'
-            out += ' <span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
-            out += '</dd>';
+            var out = '<span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
+            out += '<span class="label">' + label + ':</span>';
+            out += '<span><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value + '</a>';
+            out += '</span>';
             return out;
         },
         subjectspanel    : function ($panel){
@@ -184,11 +183,10 @@ jQuery.fn.searchtabs = function ($panes){
             if (value.length > 1){
                 rules = ' (' + $('input[name=Subject_usage:ignore_empty]:checked').next().text() + ')';
             }
-            var out = '<dt>' + label + ':</dt>';
-            out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value.join(', ') + rules + '</a>';
-//            out += ' <a class="remove-filter resetbutton" href="#' + $panel.attr('id') + '">⨯</a>'
-            out += ' <span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
-            out += '</dd>';
+            var out = '<span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
+            out += '<span class="label">' + label + ':</span>';
+            out += '<span><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value.join(', ') + rules + '</a>';
+            out += '</span>';
             return out;
         },
         typespanel       : function ($panel){
@@ -199,11 +197,10 @@ jQuery.fn.searchtabs = function ($panes){
             if (! value.length){
                 return '';
             }
-            var out = '<dt>' + label + ':</dt>';
-            out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value.join(', ') + '</a>';
-//            out += ' <a class="remove-filter resetbutton" href="#' + $panel.attr('id') + '">⨯</a>'
-            out += ' <span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
-            out += '</dd>';
+            var out = '<span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
+            out += '<span class="label">' + label + ':</span>';
+            out += '<span><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value.join(', ') + '</a>';
+            out += '</span>';
             return out;
         },
         createdpanel     : function ($panel){
@@ -213,11 +210,10 @@ jQuery.fn.searchtabs = function ($panes){
                 return '';
             }
             var value = $opt.text();
-            var out = '<dt>' + label + ':</dt>';
-            out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value + '</a>';
-//            out += ' <a class="remove-filter resetbutton" href="#' + $panel.attr('id') + '">⨯</a>'
-            out += ' <span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
-            out += '</dd>';
+            var out = '<span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
+            out += '<span class="label">' + label + ':</span>';
+            out += '<span><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value + '</a>';
+            out += '</span>';
             return out;
         },
         reviewstatepanel : function ($panel){
@@ -228,11 +224,10 @@ jQuery.fn.searchtabs = function ($panes){
             if (! value.length){
                 return '';
             }
-            var out = '<dt>' + label + ':</dt>';
-            out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value.join(', ') + '</a>';
-//            out += ' <a class="remove-filter resetbutton" href="#' + $panel.attr('id') + '">⨯</a>'
-            out += ' <span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
-            out += '</dd>';
+            var out = '<span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
+            out += '<span class="label">' + label + ':</span>';
+            out += '<span><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value.join(', ') + '</a>';
+            out += '</span>';
             return out;
         },
         creatorpanel     : function ($panel){
@@ -248,11 +243,10 @@ jQuery.fn.searchtabs = function ($panes){
             if (value === ''){
                 return '';
             }
-            var out = '<dt>' + label + ':</dt>';
-            out += '<dd><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value + '</a>';
-//            out += ' <a class="remove-filter resetbutton" href="#' + $panel.attr('id') + '">⨯</a>';
-            out += ' <span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
-            out += '</dd>';
+            var out = '<span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
+            out += '<span class="label">' + label + ':</span>';
+            out += '<span><a class="edit-filter" href="#' + $panel.attr('id')+ '">' + value + '</a>';
+            out += '</span>';
             return out;
         },
         sortonpanel      : function ($panel){
@@ -262,10 +256,10 @@ jQuery.fn.searchtabs = function ($panes){
                 return '';
             }
             var value = $opt.text();
-            var out = '<dt>' + label + ':</dt>';
-            out += '<dd><a class="edit-filter" href="#' + $panel.attr('id') + '">' + value + '</a>';
-            out += ' <span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
-            out += '</dd>';
+            var out = '<span class="remove-filter"><a class="resetbutton" href="#' + $panel.attr('id') + '">⨯</a></span>';
+            out += '<span class="label">' + label + ':</span>';
+            out += '<span><a class="edit-filter" href="#' + $panel.attr('id') + '">' + value + '</a>';
+            out += '</span>';
             return out;
         }
     };
@@ -280,7 +274,7 @@ jQuery.fn.searchtabs = function ($panes){
             if (action){
                 content = action($this);
                 if (content){
-                    $overview.append('<dl id="parameter-' + $this.attr('id') + '">' + content + '</dl>');
+                    $overview.append('<div class="overview-item" id="parameter-' + $this.attr('id') + '">' + content + '</div>');
                     $('#parameter-' + $this.attr('id') + ' a.edit-filter').click(function(evt){
                         evt.preventDefault();
                         var nodehref = $(this).attr('href');
@@ -289,7 +283,7 @@ jQuery.fn.searchtabs = function ($panes){
                     });
                     $('#parameter-' + $this.attr('id') + ' .remove-filter a').click(function(evt){
                         evt.preventDefault();
-                        $(this).parent().parent().parent().fadeOut();
+                        $(this).parent().parent().fadeOut();
                         var nodehref = $(this).attr('href');
                         var panel = nodehref.split('#')[1];
                         resetpanel[panel]();

@@ -41,7 +41,7 @@
           class="enableAutoFocus allowMultiSubmit"
           method="get"
           name="search"
-          id="searchform">
+          id="flowsearchform">
 
         <noscript>
             <style>
