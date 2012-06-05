@@ -4,7 +4,7 @@ Changelog
 0.4 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- fix js markup [sithmel]
 
 
 0.3 (2012-05-23)
