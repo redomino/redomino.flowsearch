@@ -65,7 +65,7 @@
     margin-bottom:0;
 }
 #overview-wrapper{
-    background-color:#DDDDDD;
+    background-color:#EEEEEE;
     border-top-left-radius: 0.5em;
     border-top-right-radius: 0.5em;
     border-bottom-left-radius: 0.5em;
@@ -85,6 +85,9 @@
 
 #overview .remove-filter{
     padding:0 4px;
+}
+#overview .remove-filter a{
+    border:none;
 }
 
 #results {

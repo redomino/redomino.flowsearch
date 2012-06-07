@@ -10,18 +10,8 @@
 </head>
 <body>
 
-<!--<metal:content-core fill-slot="main">-->
-<!--    <metal:content-core define-macro="content-core">-->
 
 <metal:content-core fill-slot="content-core">
-<!--    <metal:content-core define-macro="content-core">-->
-
-
-<!--<h1 class="documentFirstHeading">-->
-<!--            <span i18n:translate="heading_search_results">-->
-<!--                Search results-->
-<!--            </span>-->
-<!--</h1>-->
 
 <div class="flowsearchform"
               tal:define="DateTime python:modules['DateTime'].DateTime;
@@ -58,11 +48,11 @@
 
         </noscript>
 
+        <input type="hidden" name="b_size:int" value="10" />
         <input type="hidden" name="advanced_search" value="True" />
         <input type="hidden" name="path.query:record"
                             tal:attributes="value python:folder_path.absolute_url_path()" />
 
-<!--        <div class="filter_by">Filtra per:&nbsp;</div>-->
         <ul id="filterpanel_filters" class="flowsearchtabs" i18n:domain="redomino.flowsearch">
             <li><a id="divlegend-textpanel" href="#divlegend-textpanel"
                   i18n:translate="label_text">Text</a></li>
@@ -83,25 +73,6 @@
             <li><a id="divlegend-sortonpanel" href="#divlegend-sortonpanel"
                   i18n:translate="">Sort</a></li>
         </ul>
-<!--        <ul id="filterpanel_filters" class="flowsearchtabs">-->
-<!--            <li><a id="divlegend-textpanel" href="#divlegend-textpanel"-->
-<!--                  i18n:translate="label_search_text">Search Text</a></li>-->
-<!--            <li><a id="divlegend-pathpanel" href="#divlegend-pathpanel"-->
-<!--                  i18n:translate="label_path_criteria_recurse">Search Sub-Folders</a></li>-->
-<!--            <li tal:condition="usedSubjects">-->
-<!--                <a href="#" i18n:translate="label_tags">Tags</a></li>-->
-<!--            <li><a id="divlegend-typespanel" href="#divlegend-typespanel"-->
-<!--                  i18n:translate="label_item_type">Content types</a></li>-->
-<!--            <li><a id="divlegend-createdpanel" href="#divlegend-createdpanel"-->
-<!--                  i18n:translate="label_new_items_since">Date range</a></li>-->
-<!--            <li tal:condition="options/show_review_state">-->
-<!--                <a id="divlegend-reviewstatepanel" href="#divlegend-reviewstatepanel"-->
-<!--                  i18n:translate="label_review_status">Review State</a></li>-->
-<!--            <li><a id="divlegend-creatorpanel" href="#divlegend-creatorpanel"-->
-<!--                  i18n:translate="label_author">Contributors</a></li>-->
-<!--            <li><a id="divlegend-sortonpanel" href="#divlegend-sortonpanel"-->
-<!--                  i18n:translate="">Sort results</a></li>-->
-<!--        </ul>-->
         <div class="flowsearchpanes">
             <div class="field" id="textpanel">
                 <label for="SearchableText" i18n:translate="label_search_text">Search Text</label>
@@ -122,7 +93,6 @@
                        tal:attributes="value python:request.get('SearchableText', '').replace('*','')"
                        i18n:attributes="title"
                        />
-<!--                       class="inputLabel"-->
             </div>
 
             <div class="field" id="pathpanel">
@@ -133,8 +103,6 @@
                                i18n:translate=""
                                style="cursor: pointer">Yes</label>
 
-<!--        <input type="hidden" name="path.navtree_start:int" value="1"/>-->
-<!--        <input type="hidden" name="path.level:int" value="3"/>-->
 
 
                         <input id="path-current-all-site" type="radio" name="path.depth:record:int" value="1"/>
@@ -142,22 +110,6 @@
                                i18n:translate=""
                                style="cursor: pointer">No</label>
 
-<!--                    <div id="path_query">-->
-<!--                        <input id="path-all-site" class="all_site" type="radio" name="path.query:record" checked="checked"-->
-<!--                           tal:attributes="value python:'/'.join(portal.getPhysicalPath())" />-->
-<!--                        <label for="path-all-site" >Tutto il sito</label>-->
-<!--                        <input id="path-current-folder" type="radio" name="path.query:record"-->
-<!--                                            tal:attributes="value python:folder_path.absolute_url_path()" />-->
-<!--                        <label for="path-current-folder">Cartella corrente</label>-->
-<!--                    </div>-->
-
-<!--                        <input id="path-current-folder-only" type="checkbox" name="path.depth:record:int" value="1"/>-->
-<!--                        <label for="path-current-folder-only"-->
-<!--                               i18n:domain="plone"-->
-<!--                               i18n:translate="label_searchbox_currentfolder_only"-->
-<!--                               style="cursor: pointer">-->
-<!--                            only in current section-->
-<!--                        </label>-->
                 </span>
             </div>
 
@@ -455,10 +407,6 @@
 
 </span>
 
-
-
-
-
         <div id="overview"></div>
         <div class="visualClear"></div>
     </div>
@@ -469,7 +417,6 @@
     <script type="text/javascript" tal:attributes="src string:${portal/portal_url}/++resource++redomino.flowsearch.resources/flowsearch.js"></script>
 </div>
 
-<!--    </metal:content-core>-->
 </metal:content-core>
 </html>
 

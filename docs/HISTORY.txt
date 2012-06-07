@@ -4,7 +4,9 @@ Changelog
 0.5 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- fix Search criteria's bg color [sithmel]
+- limit batching to 10 elements [sithmel]
+- added a message on ajax errors [sithmel]
 
 
 0.4 (2012-06-05)
