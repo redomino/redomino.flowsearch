@@ -5,9 +5,9 @@
       lang="en"
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="plone">
-<head>
-<metal:block fill-slot="top_slot" tal:define="dummy python:request.set('disable_border',1);" />
-</head>
+<!--<head>-->
+<!--<metal:block fill-slot="top_slot" tal:define="dummy python:request.set('disable_border',1);" />-->
+<!--</head>-->
 <body>
 
 
@@ -21,7 +21,8 @@
                           first_call  not:request/advanced_search|nothing;
                           usedSubjects python:context.portal_catalog.uniqueValuesFor('Subject');">
 
-    <a tal:attributes="href string:${context/absolute_url}/view" i18n:domain="redomino.flowsearch" i18n:translate="">Back to content</a>
+    <a tal:condition="python: context.getLayout() != 'flowsearch'"
+       tal:attributes="href string:${context/absolute_url}/view" i18n:domain="redomino.flowsearch" i18n:translate="">Back to content</a>
     <div id="overview-wrapper">
         <h3><span i18n:domain="redomino.flowsearch" i18n:translate="">Search criteria</span>
         <span>(<a href="#" id="reset-search"  i18n:domain="redomino.flowsearch" i18n:translate="">Reset all</a>)</span>
@@ -98,14 +99,20 @@
             <div class="field" id="pathpanel">
                 <label i18n:domain="redomino.flowsearch" i18n:translate="label_path_criteria_recurse">Search also in SubFolders</label>
                 <span>
-                        <input id="path-current-folder-only" type="radio" checked="checked" name="path.depth:record:int" value="-1"/>
+                        <input tal:condition="python: context.getLayout() == 'flowsearch'"
+                               id="path-current-folder-only" type="radio" name="path.depth:record:int" value="-1"/>
+                        <input tal:condition="python: context.getLayout() != 'flowsearch'"
+                               id="path-current-folder-only" type="radio" checked="checked" name="path.depth:record:int" value="-1"/>
                         <label for="path-current-folder-only"
                                i18n:translate=""
                                style="cursor: pointer">Yes</label>
 
 
 
-                        <input id="path-current-all-site" type="radio" name="path.depth:record:int" value="1"/>
+                        <input tal:condition="python: context.getLayout() != 'flowsearch'"
+                               id="path-current-all-site" type="radio" name="path.depth:record:int" value="1"/>
+                        <input tal:condition="python: context.getLayout() == 'flowsearch'"
+                               id="path-current-all-site" type="radio" checked="checked" name="path.depth:record:int" value="1"/>
                         <label for="path-current-all-site"
                                i18n:translate=""
                                style="cursor: pointer">No</label>

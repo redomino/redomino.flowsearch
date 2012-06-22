@@ -6,8 +6,8 @@ class FlowSearch(BrowserView):
     def __call__(self):
         navigation_root = self.navigation_root
 
-        if 'path' not in self.request.form:
-            self.request.RESPONSE.redirect(navigation_root.absolute_url() + '/@@flowsearch?' + self.request['QUERY_STRING'] + '&' + "%2F".join(navigation_root.getPhysicalPath()) ) # query...
+        if 'SearchableText' in self.request.form and 'path' not in self.request.form:
+#            self.request.RESPONSE.redirect(navigation_root.absolute_url() + '/@@flowsearch?' + self.request['QUERY_STRING'] + '&' + "%2F".join(navigation_root.getPhysicalPath()) ) # query...
             self.request.RESPONSE.redirect('%s/@@flowsearch?%s&path=%s' % (navigation_root.absolute_url(),
                                                                       self.request['QUERY_STRING'],
                                                                       "%2F".join(navigation_root.getPhysicalPath())
