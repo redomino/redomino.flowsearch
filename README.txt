@@ -21,7 +21,7 @@ characteristics and provided information. Search parameters are:
 
 Screenshot:
 
-.. figure:: https://github.com/redomino/redomino.flowsearch/blob/master/docs/resources/flowsearch.png 
+.. figure:: https://github.com/redomino/redomino.flowsearch/raw/master/docs/resources/flowsearch.png 
    :align:   center
 
    Flowsearch view
