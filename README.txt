@@ -21,8 +21,10 @@ characteristics and provided information. Search parameters are:
 
 Screenshot:
 
-.. figure::  resources/flowsearch.png
+.. figure:: https://github.com/redomino/redomino.flowsearch/blob/master/docs/resources/flowsearch.png 
    :align:   center
+
+   Flowsearch view
 
 Real-time update of search results: for every change you apply to the parameters, search results are 'live', meaning
 they are updated in real time; which means no more results page being refreshed or another page being opened. 
