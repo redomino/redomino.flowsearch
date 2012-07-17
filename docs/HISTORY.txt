@@ -4,6 +4,9 @@ Changelog
 0.8 (unreleased)
 ----------------
 
+- Fix templates: now it validates with xhtml strict w3c validator
+  [sithmel]
+
 - Added .gitignore file
   [davidemoro]
 

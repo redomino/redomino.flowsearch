@@ -101,3 +101,16 @@
 #searchform{
     margin-bottom: 1em;
 }
+
+/*
+without javascript
+assuming class "no-js" is added to <html> and modernizr.js is loaded
+see redomino.css3theme "main_template.pt" for a reference
+*/
+
+.no-js #overview-wrapper, #results, .flowsearchform > h3,
+.no-js .flowsearchpanes > div.field,
+.no-js #filterpanel_filters{
+   display:none !important;
+}
+
