@@ -4,7 +4,8 @@ Changelog
 0.9 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Fixed error on filtering by last access date
+  [giacomos]
 
 
 0.8 (2012-07-17)
