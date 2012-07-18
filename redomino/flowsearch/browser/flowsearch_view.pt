@@ -5,9 +5,9 @@
       lang="en"
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="plone">
-<!--<head>-->
-<!--<metal:block fill-slot="top_slot" tal:define="dummy python:request.set('disable_border',1);" />-->
-<!--</head>-->
+<head>
+
+</head>
 <body>
 
 
@@ -31,28 +31,14 @@
     <form action="search"
           class="enableAutoFocus allowMultiSubmit"
           method="get"
-          name="search"
           id="flowsearchform">
 
-        <noscript>
-            <style>
-#filterpanel_filters{
-    display:none !important;
-}
-.flowsearchpanes > div.field{
-    display:block !important;
-}
-#overview-wrapper, #results, .flowsearchform > h3{
-    display:none !important;
-}
-            </style>
-
-        </noscript>
-
+        <div>
         <input type="hidden" name="b_size:int" value="10" />
         <input type="hidden" name="advanced_search" value="True" />
         <input type="hidden" name="path.query:record"
                             tal:attributes="value python:folder_path.absolute_url_path()" />
+        </div>
 
         <ul id="filterpanel_filters" class="flowsearchtabs" i18n:domain="redomino.flowsearch">
             <li><a id="divlegend-textpanel" href="#divlegend-textpanel"
@@ -259,7 +245,7 @@
             <div class="field" id="reviewstatepanel"
                  tal:condition="options/show_review_state">
 
-                <label for="review_state"
+                <label 
                        i18n:translate="label_review_status">Review State</label>
 
                 <div class="collapse"

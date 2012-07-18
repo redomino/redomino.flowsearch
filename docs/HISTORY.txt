@@ -1,10 +1,30 @@
 Changelog
 =========
 
-0.7 (unreleased)
+0.9 (unreleased)
 ----------------
 
 - Nothing changed yet.
+
+
+0.8 (2012-07-17)
+----------------
+
+- Fix templates: now it validates with xhtml strict w3c validator
+  [sithmel]
+
+- Added .gitignore file
+  [davidemoro]
+
+- Fixed README.txt
+  [davidemoro]
+
+
+0.7 (2012-06-29)
+----------------
+
+- Updated README.txt.
+  [dmoro]
 
 
 0.6 (2012-06-22)

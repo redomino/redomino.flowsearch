@@ -4,7 +4,7 @@
                  search_input_id view/search_input_id;
                  folder_brain context/@@plone_context_state/folder">
 
-    <form name="searchform" id="searchGadget_form" 
+    <form id="searchGadget_form" 
           action="search"
           tal:attributes="action string:${folder_brain/absolute_url}/search;
           id string:${search_input_id}_form">
@@ -62,7 +62,7 @@
         </a>
     </div>
 
-<script>
+<script type="text/javascript">
 (function (){
 
     $('#searchGadget_form').submit(function (){
