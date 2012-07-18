@@ -295,8 +295,9 @@ jQuery.fn.searchtabs = function ($panes) {
 
     var refresh = function () {
         refresh_overview();
-        window.location.hash = $searchform.serialize();
-        var query = window.location.hash.slice(1);
+        var query = $searchform.serialize()
+        window.location.hash = query;
+        query = query.slice(1);
 
         query = addstar(query);
         $all_results.empty();
