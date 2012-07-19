@@ -17,6 +17,14 @@
      permission="zope2.View"
      layer=".interfaces.IFlowsearchLayer"
      />
+  <browser:page
+     for="*"
+     name="flowsearch_search"
+     template="search.pt"
+     class=".search.FlowSearchSearch"
+     permission="zope2.View"
+     layer=".interfaces.IFlowsearchLayer"
+     />
 
    <browser:viewlet
      name="plone.searchbox"

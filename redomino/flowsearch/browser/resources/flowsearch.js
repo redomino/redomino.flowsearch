@@ -301,7 +301,7 @@ jQuery.fn.searchtabs = function ($panes) {
 
         query = addstar(query);
         $all_results.empty();
-        append_search('search?' + query);
+        append_search('@@flowsearch_search?' + query);
     };
     
     if (window.location.hash) {

@@ -41,6 +41,7 @@ setup(name='redomino.flowsearch',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
+          'redomino.breadcrumbsbrain',
       ],
       entry_points="""
       # -*- Entry points: -*-
