@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.10 (unreleased)
+0.10 (2012-07-19)
 -----------------
 
 - Added separated search view for a better results management
