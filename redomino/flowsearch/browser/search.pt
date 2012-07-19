@@ -39,7 +39,6 @@
                  is_advanced_search request/form/advanced_search|nothing;
                  advanced_search_url string:${context/@@plone_portal_state/navigation_root_url}/search_form;
                  searchterm request/SearchableText|nothing;">
-  <h1>CIAO!</h1>
 
     <div id="content-core">
         <form name="searchform"

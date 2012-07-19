@@ -4,7 +4,8 @@ Changelog
 0.10 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Added separated search view for a better results management
+  [giacomos]
 
 
 0.9 (2012-07-18)
