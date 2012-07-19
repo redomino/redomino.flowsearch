@@ -8,6 +8,6 @@ class FlowSearchSearch(BrowserView):
         return super(FlowSearchSearch, self).__call__()
 
     def removeContextFromResults(self, results):
-        context_uid = IUUID(self.context)
+        context_uid = IUUID(self.context, None)
         results = [res for res in results if res.UID != context_uid]
         return results
