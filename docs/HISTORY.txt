@@ -4,7 +4,9 @@ Changelog
 0.11 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- fix css [giacomos]
+- omitting current container from the search results the program crashes because
+  the plone portal has no IUUID adapter [giacomos, sithmel]
 
 
 0.10 (2012-07-19)
