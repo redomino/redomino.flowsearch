@@ -4,8 +4,8 @@ Changelog
 0.12 (unreleased)
 -----------------
 
-- Nothing changed yet.
-
+- From now, when you change the search context it changes the search path
+  accordingly [sithmel]
 
 0.11 (2012-09-19)
 -----------------

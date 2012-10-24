@@ -343,9 +343,11 @@ jQuery.fn.searchtabs = function ($panes) {
     $('#flowsearch-breadcrumbs a').click(function () {
         var href = $(this).attr('href');
         var hash = window.location.hash;
+        hash = hash.replace(/path\.query:record=[^&]*&/, '');
         window.location = href + '/@@flowsearch' + hash;
         return false;
     });
+
 
     
 }(jQuery));
