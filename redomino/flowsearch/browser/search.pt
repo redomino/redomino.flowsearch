@@ -36,15 +36,12 @@
                  desc_ellipsis site_properties/ellipsis;
                  use_view_action site_properties/typesUseViewActionInListings|python:();
                  portal_url context/portal_url;
-                 is_advanced_search request/form/advanced_search|nothing;
-                 advanced_search_url string:${context/@@plone_portal_state/navigation_root_url}/search_form;
                  searchterm request/SearchableText|nothing;">
 
     <div id="content-core">
         <form name="searchform"
               action="search"
-              class="searchPage"
-              tal:condition="not:is_advanced_search">
+              class="searchPage">
             <input class="searchPage"
                    name="SearchableText"
                    type="text"
@@ -58,57 +55,8 @@
                    value="Search"
                    i18n:attributes="value label_search;"/>
 
-            <p class="discreet"
-               i18n:translate="search_results_advanced">
-            Did you not find what you were looking for? Try the
-            <span i18n:name="advanced_search">
-            <a href=""
-               i18n:translate="search_results_advanced_link"
-               tal:attributes="href string:${advanced_search_url}?${request/QUERY_STRING}">Advanced Search</a>
-            </span>
-            to refine your search.
-            </p>
         </form>
 
-        <div class="search-advanced"
-             tal:condition="is_advanced_search">
-            <div id="hide-form" style="display:none;">
-            <p>
-                <a href=""
-                   i18n:translate="hide_the_search_form"
-                   tal:attributes="href string:${advanced_search_url}?${request/QUERY_STRING}">
-                    Hide the search form
-                </a>
-          </p>
-                <metal:use use-macro="context/search_form/macros/form" />
-            </div>
-            <p id="show-form">
-                <a href=""
-                   i18n:translate="edit_your_search_options"
-                   tal:attributes="href string:${advanced_search_url}?${request/QUERY_STRING}">
-                    Edit your search options
-                </a>
-            </p>
-        </div>
-        <script type="text/javascript">
-
-            jq(document).ready(function(){
-              jq('#show-form a').click(function(event) {
-                 event.preventDefault();
-                 jq('#hide-form').show('slow');
-                 jq('#show-form').hide('slow');
-              });
-            });
-            jq(document).ready(function(){
-              jq('#hide-form a').click(function(event) {
-                 event.preventDefault();
-                 jq('#show-form').show('slow');
-                 jq('#hide-form').hide('slow');
-              });
-            });
-
-
-        </script>
         <h1 class="documentFirstHeading">
             <span i18n:translate="heading_search_results">
                 Search results

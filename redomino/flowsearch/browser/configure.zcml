@@ -35,6 +35,11 @@
      template="searchbox.pt"
      />
 
-
+  <browser:page
+       name="search_form"
+       for="*"
+       permission="zope2.View"
+       template="search_form.pt"
+       />
 
 </configure>

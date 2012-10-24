@@ -17,7 +17,6 @@
               tal:define="DateTime python:modules['DateTime'].DateTime;
                           portal context/@@plone_portal_state/portal;
                           folder_path context/@@plone_context_state/folder;
-                          options context/@@searchform-options;
                           first_call  not:request/advanced_search|nothing;
                           usedSubjects python:context.portal_catalog.uniqueValuesFor('Subject');">
 
@@ -52,8 +51,7 @@
                   i18n:translate="label_item_type">Content types</a></li>
             <li><a id="divlegend-createdpanel" href="#divlegend-createdpanel"
                   i18n:translate="label_date_range">Date range</a></li>
-            <li tal:condition="options/show_review_state">
-                <a id="divlegend-reviewstatepanel" href="#divlegend-reviewstatepanel"
+            <li><a id="divlegend-reviewstatepanel" href="#divlegend-reviewstatepanel"
                   i18n:translate="label_state">Review State</a></li>
             <li><a id="divlegend-creatorpanel" href="#divlegend-creatorpanel"
                   i18n:translate="label_author">Contributors</a></li>
@@ -242,8 +240,7 @@
                 <input type="hidden" name="created_usage" value="range:min" />
             </div>
 
-            <div class="field" id="reviewstatepanel"
-                 tal:condition="options/show_review_state">
+            <div class="field" id="reviewstatepanel">
 
                 <label 
                        i18n:translate="label_review_status">Review State</label>
