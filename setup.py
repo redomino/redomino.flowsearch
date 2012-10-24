@@ -16,7 +16,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.12'
+version = '0.13.dev0'
 
 setup(name='redomino.flowsearch',
       version=version,
