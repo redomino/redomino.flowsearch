@@ -4,7 +4,7 @@ Changelog
 0.13 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- fix search context for IE [sithmel]
 
 
 0.12 (2012-10-24)
