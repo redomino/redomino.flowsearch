@@ -8,6 +8,7 @@
   <browser:resourceDirectory
      name="redomino.flowsearch.resources"
      directory="resources"
+     layer=".interfaces.IFlowsearchLayer"
      />
   <browser:page
      for="*"
