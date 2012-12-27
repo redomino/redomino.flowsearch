@@ -6,6 +6,8 @@ Changelog
 
 - Added a layer attribute to browser:resourceDirectory resources [davidemoro]
 
+- Fix issue #3 (not safe using absolute_url_path with rewrite urls) [davidemoro]
+
 
 0.13 (2012-11-12)
 -----------------
